@@ -1,0 +1,8 @@
+{
+  "dependencies": {
+    "mssql1": {
+      "type": "mssql",
+      "connectionId": "ConnectionStrings:ETI_X_2024_IntroASPNETCoreContext"
+    }
+  }
+}

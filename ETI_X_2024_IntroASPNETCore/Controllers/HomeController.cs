@@ -1,4 +1,4 @@
-using ETI_X_2024_IntroASPNETCore.Models;
+ï»¿using ETI_X_2024_IntroASPNETCore.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
@@ -16,45 +16,45 @@ namespace ETI_X_2024_IntroASPNETCore.Controllers
 
         public IActionResult Index()
         {
-            //Aby wys³aæ dane z kontrolera do widoku mo¿emy u¿yæ Viewbag
-            //po kropce definiujemy w³asn¹ nazwê
-            //aby wyœwietliæ dane w widoku u¿yjemy @ViewBag.info1
+            //Aby wysÅ‚aÄ‡ dane z kontrolera do widoku moÅ¼emy uÅ¼yÄ‡ Viewbag
+            //po kropce definiujemy wÅ‚asnÄ… nazwÄ™
+            //aby wyÅ›wietliÄ‡ dane w widoku uÅ¼yjemy @ViewBag.info1
             ViewBag.info1 = "Pozdrowienia z kontrolera";
             ViewBag.info2 = 2024;
             ViewBag.dataigodzina = DateTime.Now;
             return View();
         }
-        //Aby odebraæ w kontrolerze dane z widoku wys³ane za pomoc¹ querystring
-        //w widoku za pomoc¹ linku dodajemy dane
+        //Aby odebraÄ‡ w kontrolerze dane z widoku wysÅ‚ane za pomocÄ… querystring
+        //w widoku za pomocÄ… linku dodajemy dane
         //a w kontrolerze te dane odczytujemy
         public IActionResult Form2(string odpowiedz)
         {
-            if(odpowiedz=="Warszawa")
+            if (odpowiedz == "Warszawa")
             {
-                ViewBag.odp = "Udzielono poprawnej odpowiedzi, stolic¹ Polski jest Warszawa";
+                ViewBag.odp = "Udzielono poprawnej odpowiedzi, stolicÄ… Polski jest Warszawa";
             }
             return View();
         }
-        public IActionResult Form5(string imie,string nazwisko, int rokUrodzenia,string adres,string fav_language)
-        {        
+        public IActionResult Form5(string imie, string nazwisko, int rokUrodzenia, string adres, string fav_language)
+        {
             ViewBag.imie = imie;
-            ViewBag.nazwisko=nazwisko;
-            ViewBag.rokUrodzenia=rokUrodzenia;
-            ViewBag.adres=adres;
+            ViewBag.nazwisko = nazwisko;
+            ViewBag.rokUrodzenia = rokUrodzenia;
+            ViewBag.adres = adres;
             ViewBag.fav_language = fav_language;
             return View();
         }
         public IActionResult Form6()
         {
-            List<string> dniTygodnia= new List<string>();
-            dniTygodnia.Add("Poniedzia³ek");
+            List<string> dniTygodnia = new List<string>();
+            dniTygodnia.Add("PoniedziaÅ‚ek");
             dniTygodnia.Add("Wtorek");
-            dniTygodnia.Add("Œroda");
+            dniTygodnia.Add("Åšroda");
             dniTygodnia.Add("Czwartek");
-            dniTygodnia.Add("Pi¹tek");
+            dniTygodnia.Add("PiÄ…tek");
             dniTygodnia.Add("Sobota");
             dniTygodnia.Add("Niedziela");
-            ViewBag.dniTygodnia=dniTygodnia;
+            ViewBag.dniTygodnia = dniTygodnia;
             return View();
         }
         //mandaty
@@ -62,20 +62,21 @@ namespace ETI_X_2024_IntroASPNETCore.Controllers
         {
             if (speed != 0)
             {
-                if(speed>50)
+                if (speed > 50)
                 {
                     ViewBag.mandat = "Dostajesz mandat";
-                }else
+                }
+                else
                 {
-                    ViewBag.mandat = "Prêdkoœæ poprawna";
+                    ViewBag.mandat = "PrÄ™dkoÅ›Ä‡ poprawna";
                 }
             }
             return View();
         }
         //pola figur
-        public IActionResult Form8(float bok1,float bok2, float wysokosc)
+        public IActionResult Form8(float bok1, float bok2, float wysokosc)
         {
-            if (bok1!= 0)
+            if (bok1 != 0)
             {
                 float poletrapezu = ((bok1 + bok2) * wysokosc) / 2;
                 ViewBag.poletrapezu = poletrapezu;
@@ -89,46 +90,46 @@ namespace ETI_X_2024_IntroASPNETCore.Controllers
         }
         //tabliczka mnozenia2
         //https://wordwall.net/pl/resource/11645442/tabliczka-mnozenia
-        public IActionResult Form10(int liczba1, int liczba2,int wynik)
+        public IActionResult Form10(int liczba1, int liczba2, int wynik)
         {
             if (wynik == liczba1 * liczba2)
-                ViewBag.wynik = "Poprawna odpowiedŸ";
+                ViewBag.wynik = "Poprawna odpowiedÅº";
             else
-                ViewBag.wynik = "Niepoprawna odpowiedŸ, poprawny wynik to: "+liczba1*liczba2;
+                ViewBag.wynik = "Niepoprawna odpowiedÅº, poprawny wynik to: " + liczba1 * liczba2;
             return View();
         }
-        //lista uczniów
+        //lista uczniÃ³w
         public IActionResult Form11()
         {
-            List<Uczen> listaUczniow= new List<Uczen>();
-            listaUczniow.Add(new Uczen("Jan", "Kowalski", "ul. Zielona 27",1, "3A"));
-            listaUczniow.Add(new Uczen("Adam", "Nowak", "ul. Jagielloñska  45", 2, "3A"));
+            List<Uczen> listaUczniow = new List<Uczen>();
+            listaUczniow.Add(new Uczen("Jan", "Kowalski", "ul. Zielona 27", 1, "3A"));
+            listaUczniow.Add(new Uczen("Adam", "Nowak", "ul. JagielloÅ„ska  45", 2, "3A"));
             listaUczniow.Add(new Uczen("Anna", "Kowal", "ul. Niebieska 67", 3, "3A"));
-            listaUczniow.Add(new Uczen("Janina", "Nowakowska", "ul. Zó³ta 3", 4, "3A"));
+            listaUczniow.Add(new Uczen("Janina", "Nowakowska", "ul. ZÃ³Å‚ta 3", 4, "3A"));
             listaUczniow.Add(new Uczen("Adrian", "Kot", "ul. Lwowska 7", 5, "3A"));
             ViewBag.listaUczniow = listaUczniow;
             return View();
         }
-        //lista uczniów szczêœliwy numerek
+        //lista uczniÃ³w szczÄ™Å›liwy numerek
         public IActionResult Form12()
         {
             List<Uczen> listaUczniow = new List<Uczen>();
             listaUczniow.Add(new Uczen("Jan", "Kowalski", "ul. Zielona 27", 1, "3A"));
-            listaUczniow.Add(new Uczen("Adam", "Nowak", "ul. Jagielloñska  45", 2, "3A"));
+            listaUczniow.Add(new Uczen("Adam", "Nowak", "ul. JagielloÅ„ska  45", 2, "3A"));
             listaUczniow.Add(new Uczen("Anna", "Kowal", "ul. Niebieska 67", 3, "3A"));
-            listaUczniow.Add(new Uczen("Janina", "Nowakowska", "ul. Zó³ta 3", 4, "3A"));
+            listaUczniow.Add(new Uczen("Janina", "Nowakowska", "ul. ZÃ³Å‚ta 3", 4, "3A"));
             listaUczniow.Add(new Uczen("Adrian", "Kot", "ul. Lwowska 7", 5, "3A"));
             ViewBag.listaUczniow = listaUczniow;
             return View();
         }
-        //lista uczniów model
+        //lista uczniÃ³w model
         public IActionResult Form13()
         {
             List<Uczen> listaUczniow = new List<Uczen>();
             listaUczniow.Add(new Uczen("Jan", "Kowalski", "ul. Zielona 27", 1, "3A"));
-            listaUczniow.Add(new Uczen("Adam", "Nowak", "ul. Jagielloñska  45", 2, "3A"));
+            listaUczniow.Add(new Uczen("Adam", "Nowak", "ul. JagielloÅ„ska  45", 2, "3A"));
             listaUczniow.Add(new Uczen("Anna", "Kowal", "ul. Niebieska 67", 3, "3A"));
-            listaUczniow.Add(new Uczen("Janina", "Nowakowska", "ul. Zó³ta 3", 4, "3A"));
+            listaUczniow.Add(new Uczen("Janina", "Nowakowska", "ul. ZÃ³Å‚ta 3", 4, "3A"));
             listaUczniow.Add(new Uczen("Adrian", "Kot", "ul. Lwowska 7", 5, "3A"));
             return View(listaUczniow);
         }

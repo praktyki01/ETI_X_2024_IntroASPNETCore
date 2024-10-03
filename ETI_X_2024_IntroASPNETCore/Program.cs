@@ -1,4 +1,9 @@
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.DependencyInjection;
+using ETI_X_2024_IntroASPNETCore.Data;
 var builder = WebApplication.CreateBuilder(args);
+builder.Services.AddDbContext<ETI_X_2024_IntroASPNETCoreContext>(options =>
+    options.UseSqlServer(builder.Configuration.GetConnectionString("ETI_X_2024_IntroASPNETCoreContext") ?? throw new InvalidOperationException("Connection string 'ETI_X_2024_IntroASPNETCoreContext' not found.")));
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
