@@ -1,0 +1,20 @@
+﻿
+@{
+    ViewData["Title"] = "Form8";
+}
+
+<h1>Pole trapezu</h1>
+
+<h1>Witaj w programie obliczającym pole trapezu</h1>
+<form method="post" action="/home/form8">
+    <p>Podaj bok 1</p>
+    <input type="text" name="bok1" />
+    <p>Podaj bok 2</p>
+    <input type="text" name="bok2" />
+    <p>Podaj wysokość</p>
+    <input type="text" name="wysokosc" />
+    <input type="submit" value="Wyślij" />
+</form>
+
+@ViewBag.poletrapezu
+

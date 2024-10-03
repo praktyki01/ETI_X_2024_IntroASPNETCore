@@ -1,0 +1,26 @@
+﻿@model IEnumerable<Uczen>
+@{    
+    ViewData["Title"] = "Form11";
+}
+
+<h1>Lista uczniów</h1>
+<table>
+    <tr>
+        <th>Imię</th>
+        <th>Nazwisko</th>
+        <th>Adres</th>
+        <th>Numer w dzienniku</th>
+        <th>Klasa</th>
+    </tr>
+
+    @foreach (Uczen item in Model)
+    {
+        <tr>
+            <td>@item.Imie</td>
+            <td>@item.Nazwisko</td>
+            <td>@item.Adres</td>
+            <td>@item.NumerWDzienniku</td>
+            <td>@item.Klasa</td>
+        </tr>
+    }
+</table>

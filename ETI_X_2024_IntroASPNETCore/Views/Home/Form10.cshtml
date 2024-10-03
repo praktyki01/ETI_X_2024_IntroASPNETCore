@@ -1,0 +1,39 @@
+﻿
+@{
+    ViewData["Title"] = "Form10";
+}
+
+<h1>Tabliczka mnożenia</h1>
+@{
+    Random rand = new Random();
+    int liczba1=rand.Next(1, 10);
+    int liczba2 = rand.Next(1, 10);
+    int wynik = liczba1 * liczba2;
+    int wynik2 = rand.Next(1, 10) * rand.Next(1, 10);
+    while(wynik2==wynik)
+    {
+        wynik2 = rand.Next(1, 10) * rand.Next(1, 10);
+    }
+    int wynik3 = rand.Next(1, 10) * rand.Next(1, 10);
+    while (wynik3 == wynik || wynik3==wynik2)
+    {
+        wynik3 = rand.Next(1, 10) * rand.Next(1, 10);
+    }
+}
+<span>@liczba1 * @liczba2</span>
+<form method="post" action="/home/form10">
+    <input type="hidden" name="liczba1" value="@liczba1"/>
+    <input type="hidden" name="liczba2" value="@liczba2" />
+    <input type="radio" id="html" name="wynik" value="@wynik">
+    <label for="html">@wynik</label><br>
+    <input type="radio" id="css" name="wynik" value="@wynik2">
+    <label for="css">@wynik2</label><br>
+    <input type="radio" id="javascript" name="wynik" value="@wynik3">
+    <label for="javascript">@wynik3</label>
+    <br/>
+    <hr/>
+    <input type="submit" value="Wyślij"/>
+</form>
+<hr/>
+<h2>@ViewBag.wynik</h2>
+

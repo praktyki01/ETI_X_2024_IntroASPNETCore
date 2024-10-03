@@ -1,0 +1,32 @@
+﻿
+@{
+    ViewData["Title"] = "Form11";
+    Random rand = new Random();
+    List<Uczen> lista = ViewBag.listaUczniow;
+    int happyNumber = rand.Next(1, lista.Count+1);
+}
+
+<h1>Lista uczniów</h1>
+<table>
+    <tr>
+        <th>Imię</th>
+        <th>Nazwisko</th>
+        <th>Adres</th>
+        <th>Numer w dzienniku</th>
+        <th>Klasa</th>
+    </tr>
+    @{
+        int i = 1;
+    }
+@foreach (Uczen item in ViewBag.listaUczniow)
+    {
+        <tr class="@(i==happyNumber ? "green" : "")">
+            <td>@item.Imie</td>
+            <td>@item.Nazwisko</td>
+            <td>@item.Adres</td>
+            <td>@item.NumerWDzienniku</td>
+            <td>@item.Klasa</td>
+        </tr>       
+        i++;
+}
+</table>

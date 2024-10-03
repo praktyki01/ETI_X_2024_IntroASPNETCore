@@ -1,0 +1,45 @@
+﻿
+@{
+    ViewData["Title"] = "Form6";
+}
+
+<h1>Form6</h1>
+
+<ul>
+@foreach (string item in ViewBag.dniTygodnia)
+{
+    <li>@item</li>
+    
+}
+</ul>
+<ol>
+    @foreach (string item in ViewBag.dniTygodnia)
+    {
+        <li>@item</li>
+
+    }
+</ol>
+<p>Wyświetla parzyste dni tygodnia</p>
+<ul>
+    @{
+        int i = 0;
+    }    
+    @foreach (string item in ViewBag.dniTygodnia)
+    {
+        if(i%2 !=0)
+        {
+            <li>@item</li>
+        }
+        i++;
+
+    }
+</ul>
+@{
+    int liczba1 = 5;
+    int liczba2 = 7;
+    int suma = liczba1 + liczba2;
+    <p>@suma</p>
+}
+
+<p>To jest kod HTML, a suma liczb @liczba1 i @liczba2 wynosi @suma</p>
+

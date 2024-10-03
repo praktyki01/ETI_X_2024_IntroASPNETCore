@@ -1,0 +1,30 @@
+﻿
+@{
+    ViewData["Title"] = "Form5";
+}
+
+<h1>Formularz</h1>
+<form method="post" action="/home/form5">
+    <p>Podaj imię</p>
+    <input type="text" name="imie" />
+    <p>Podaj nazwisko</p>
+    <input type="text" name="nazwisko" />
+    <p>Podaj rok urodzenia</p>
+    <input type="text" name="rokUrodzenia" />
+    <p>Podaj adres</p>
+    <input type="text" name="adres" /><br/>
+    <input type="radio" id="html" name="fav_language" value="HTML">
+    <label for="html">HTML</label><br>
+    <input type="radio" id="css" name="fav_language" value="CSS">
+    <label for="css">CSS</label><br>
+    <input type="radio" id="javascript" name="fav_language" value="JavaScript">
+    <label for="javascript">JavaScript</label><br/>
+    <input type="submit" value="Wyślij"/>
+</form>
+
+<hr/>
+<h3>@ViewBag.imie</h3>
+<h3>@ViewBag.nazwisko</h3>
+<h3>@ViewBag.rokUrodzenia</h3>
+<h3>@ViewBag.adres</h3>
+<h3>@ViewBag.fav_language</h3>
