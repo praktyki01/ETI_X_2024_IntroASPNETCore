@@ -5,6 +5,6 @@
         public int KategoriaId { get; set; }
         public string Nazwa { get; set; }
         public string Opis { get; set; }
-        public ICollection<Produkt> Produkts { get; }=new List<Produkt>();
+        public ICollection<Produkt> Produkts { get; } =new List<Produkt>();
     }
 }

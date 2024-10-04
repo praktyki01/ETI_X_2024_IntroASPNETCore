@@ -10,23 +10,22 @@ using ETI_X_2024_IntroASPNETCore.Models;
 
 namespace ETI_X_2024_IntroASPNETCore.Controllers
 {
-    public class ProduktController : Controller
+    public class MarkaController : Controller
     {
         private readonly ETI_X_2024_IntroASPNETCoreContext _context;
 
-        public ProduktController(ETI_X_2024_IntroASPNETCoreContext context)
+        public MarkaController(ETI_X_2024_IntroASPNETCoreContext context)
         {
             _context = context;
         }
 
-        // GET: Produkt
+        // GET: Marka
         public async Task<IActionResult> Index()
         {
-            var eTI_X_2024_IntroASPNETCoreContext = _context.Produkt.Include(p => p.Kategoria);
-            return View(await eTI_X_2024_IntroASPNETCoreContext.ToListAsync());
+            return View(await _context.Marka.ToListAsync());
         }
 
-        // GET: Produkt/Details/5
+        // GET: Marka/Details/5
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -34,42 +33,39 @@ namespace ETI_X_2024_IntroASPNETCore.Controllers
                 return NotFound();
             }
 
-            var produkt = await _context.Produkt
-                .Include(p => p.Kategoria)
-                .FirstOrDefaultAsync(m => m.ProduktId == id);
-            if (produkt == null)
+            var marka = await _context.Marka
+                .FirstOrDefaultAsync(m => m.MarkaId == id);
+            if (marka == null)
             {
                 return NotFound();
             }
 
-            return View(produkt);
+            return View(marka);
         }
 
-        // GET: Produkt/Create
+        // GET: Marka/Create
         public IActionResult Create()
         {
-            ViewData["KategoriaId"] = new SelectList(_context.Kategoria, "KategoriaId", "Nazwa");
             return View();
         }
 
-        // POST: Produkt/Create
+        // POST: Marka/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("ProduktId,Nazwa,Opis,Cena,KategoriaId")] Produkt produkt)
+        public async Task<IActionResult> Create([Bind("MarkaId,Nazwa")] Marka marka)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(produkt);
+                _context.Add(marka);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["KategoriaId"] = new SelectList(_context.Kategoria, "KategoriaId", "Nazwa", produkt.KategoriaId);
-            return View(produkt);
+            return View(marka);
         }
 
-        // GET: Produkt/Edit/5
+        // GET: Marka/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -77,23 +73,22 @@ namespace ETI_X_2024_IntroASPNETCore.Controllers
                 return NotFound();
             }
 
-            var produkt = await _context.Produkt.FindAsync(id);
-            if (produkt == null)
+            var marka = await _context.Marka.FindAsync(id);
+            if (marka == null)
             {
                 return NotFound();
             }
-            ViewData["KategoriaId"] = new SelectList(_context.Kategoria, "KategoriaId", "Nazwa", produkt.KategoriaId);
-            return View(produkt);
+            return View(marka);
         }
 
-        // POST: Produkt/Edit/5
+        // POST: Marka/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("ProduktId,Nazwa,Opis,Cena,KategoriaId")] Produkt produkt)
+        public async Task<IActionResult> Edit(int id, [Bind("MarkaId,Nazwa")] Marka marka)
         {
-            if (id != produkt.ProduktId)
+            if (id != marka.MarkaId)
             {
                 return NotFound();
             }
@@ -102,12 +97,12 @@ namespace ETI_X_2024_IntroASPNETCore.Controllers
             {
                 try
                 {
-                    _context.Update(produkt);
+                    _context.Update(marka);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!ProduktExists(produkt.ProduktId))
+                    if (!MarkaExists(marka.MarkaId))
                     {
                         return NotFound();
                     }
@@ -118,11 +113,10 @@ namespace ETI_X_2024_IntroASPNETCore.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["KategoriaId"] = new SelectList(_context.Kategoria, "KategoriaId", "Nazwa", produkt.KategoriaId);
-            return View(produkt);
+            return View(marka);
         }
 
-        // GET: Produkt/Delete/5
+        // GET: Marka/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -130,35 +124,34 @@ namespace ETI_X_2024_IntroASPNETCore.Controllers
                 return NotFound();
             }
 
-            var produkt = await _context.Produkt
-                .Include(p => p.Kategoria)
-                .FirstOrDefaultAsync(m => m.ProduktId == id);
-            if (produkt == null)
+            var marka = await _context.Marka
+                .FirstOrDefaultAsync(m => m.MarkaId == id);
+            if (marka == null)
             {
                 return NotFound();
             }
 
-            return View(produkt);
+            return View(marka);
         }
 
-        // POST: Produkt/Delete/5
+        // POST: Marka/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var produkt = await _context.Produkt.FindAsync(id);
-            if (produkt != null)
+            var marka = await _context.Marka.FindAsync(id);
+            if (marka != null)
             {
-                _context.Produkt.Remove(produkt);
+                _context.Marka.Remove(marka);
             }
 
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
-        private bool ProduktExists(int id)
+        private bool MarkaExists(int id)
         {
-            return _context.Produkt.Any(e => e.ProduktId == id);
+            return _context.Marka.Any(e => e.MarkaId == id);
         }
     }
 }

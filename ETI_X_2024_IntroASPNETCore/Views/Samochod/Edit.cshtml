@@ -1,0 +1,61 @@
+﻿@model ETI_X_2024_IntroASPNETCore.Models.Samochod
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+
+<h4>Samochod</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="SamochodId" />
+            <div class="form-group">
+                <label asp-for="Przebieg" class="control-label"></label>
+                <input asp-for="Przebieg" class="form-control" />
+                <span asp-validation-for="Przebieg" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="RokProdukcji" class="control-label"></label>
+                <input asp-for="RokProdukcji" class="form-control" />
+                <span asp-validation-for="RokProdukcji" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Cena" class="control-label"></label>
+                <input asp-for="Cena" class="form-control" />
+                <span asp-validation-for="Cena" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="MarkaId" class="control-label"></label>
+                <select asp-for="MarkaId" class="form-control" asp-items="ViewBag.MarkaId"></select>
+                <span asp-validation-for="MarkaId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ModelId" class="control-label"></label>
+                <select asp-for="ModelId" class="form-control" asp-items="ViewBag.ModelId"></select>
+                <span asp-validation-for="ModelId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="RodzajSilnikaId" class="control-label"></label>
+                <select asp-for="RodzajSilnikaId" class="form-control" asp-items="ViewBag.RodzajSilnikaId"></select>
+                <span asp-validation-for="RodzajSilnikaId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="KolorId" class="control-label"></label>
+                <select asp-for="KolorId" class="form-control" asp-items="ViewBag.KolorId"></select>
+                <span asp-validation-for="KolorId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
