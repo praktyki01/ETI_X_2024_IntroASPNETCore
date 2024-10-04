@@ -53,16 +53,16 @@
                 @Html.DisplayFor(modelItem => item.Cena)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Marka.MarkaId)
+                @Html.DisplayFor(modelItem => item.Marka.Nazwa)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Model.ModelId)
+                @Html.DisplayFor(modelItem => item.Model.Nazwa)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.RodzajSilnika.RodzajSilnikaId)
+                @Html.DisplayFor(modelItem => item.RodzajSilnika.Nazwa)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Kolor.KolorId)
+                @Html.DisplayFor(modelItem => item.Kolor.Nazwa)
             </td>
             <td>
                 <a asp-action="Edit" asp-route-id="@item.SamochodId">Edit</a> |

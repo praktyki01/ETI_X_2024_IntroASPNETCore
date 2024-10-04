@@ -51,10 +51,10 @@ namespace ETI_X_2024_IntroASPNETCore.Controllers
         // GET: Samochod/Create
         public IActionResult Create()
         {
-            ViewData["KolorId"] = new SelectList(_context.Kolor, "KolorId", "KolorId");
-            ViewData["MarkaId"] = new SelectList(_context.Marka, "MarkaId", "MarkaId");
-            ViewData["ModelId"] = new SelectList(_context.Model, "ModelId", "ModelId");
-            ViewData["RodzajSilnikaId"] = new SelectList(_context.RodzajSilnika, "RodzajSilnikaId", "RodzajSilnikaId");
+            ViewData["KolorId"] = new SelectList(_context.Kolor, "KolorId", "Nazwa");
+            ViewData["MarkaId"] = new SelectList(_context.Marka, "MarkaId", "Nazwa");
+            ViewData["ModelId"] = new SelectList(_context.Model, "ModelId", "Nazwa");
+            ViewData["RodzajSilnikaId"] = new SelectList(_context.RodzajSilnika, "RodzajSilnikaId", "Nazwa");
             return View();
         }
 
@@ -71,10 +71,10 @@ namespace ETI_X_2024_IntroASPNETCore.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["KolorId"] = new SelectList(_context.Kolor, "KolorId", "KolorId", samochod.KolorId);
-            ViewData["MarkaId"] = new SelectList(_context.Marka, "MarkaId", "MarkaId", samochod.MarkaId);
-            ViewData["ModelId"] = new SelectList(_context.Model, "ModelId", "ModelId", samochod.ModelId);
-            ViewData["RodzajSilnikaId"] = new SelectList(_context.RodzajSilnika, "RodzajSilnikaId", "RodzajSilnikaId", samochod.RodzajSilnikaId);
+            ViewData["KolorId"] = new SelectList(_context.Kolor, "KolorId", "Nazwa", samochod.KolorId);
+            ViewData["MarkaId"] = new SelectList(_context.Marka, "MarkaId", "Nazwa", samochod.MarkaId);
+            ViewData["ModelId"] = new SelectList(_context.Model, "ModelId", "Nazwa", samochod.ModelId);
+            ViewData["RodzajSilnikaId"] = new SelectList(_context.RodzajSilnika, "RodzajSilnikaId", "Nazwa", samochod.RodzajSilnikaId);
             return View(samochod);
         }
 
@@ -91,10 +91,10 @@ namespace ETI_X_2024_IntroASPNETCore.Controllers
             {
                 return NotFound();
             }
-            ViewData["KolorId"] = new SelectList(_context.Kolor, "KolorId", "KolorId", samochod.KolorId);
-            ViewData["MarkaId"] = new SelectList(_context.Marka, "MarkaId", "MarkaId", samochod.MarkaId);
-            ViewData["ModelId"] = new SelectList(_context.Model, "ModelId", "ModelId", samochod.ModelId);
-            ViewData["RodzajSilnikaId"] = new SelectList(_context.RodzajSilnika, "RodzajSilnikaId", "RodzajSilnikaId", samochod.RodzajSilnikaId);
+            ViewData["KolorId"] = new SelectList(_context.Kolor, "KolorId", "Nazwa", samochod.KolorId);
+            ViewData["MarkaId"] = new SelectList(_context.Marka, "MarkaId", "Nazwa", samochod.MarkaId);
+            ViewData["ModelId"] = new SelectList(_context.Model, "ModelId", "Nazwa", samochod.ModelId);
+            ViewData["RodzajSilnikaId"] = new SelectList(_context.RodzajSilnika, "RodzajSilnikaId", "Nazwa", samochod.RodzajSilnikaId);
             return View(samochod);
         }
 
@@ -130,10 +130,10 @@ namespace ETI_X_2024_IntroASPNETCore.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["KolorId"] = new SelectList(_context.Kolor, "KolorId", "KolorId", samochod.KolorId);
-            ViewData["MarkaId"] = new SelectList(_context.Marka, "MarkaId", "MarkaId", samochod.MarkaId);
-            ViewData["ModelId"] = new SelectList(_context.Model, "ModelId", "ModelId", samochod.ModelId);
-            ViewData["RodzajSilnikaId"] = new SelectList(_context.RodzajSilnika, "RodzajSilnikaId", "RodzajSilnikaId", samochod.RodzajSilnikaId);
+            ViewData["KolorId"] = new SelectList(_context.Kolor, "KolorId", "Nazwa", samochod.KolorId);
+            ViewData["MarkaId"] = new SelectList(_context.Marka, "MarkaId", "Nazwa", samochod.MarkaId);
+            ViewData["ModelId"] = new SelectList(_context.Model, "ModelId", "Nazwa", samochod.ModelId);
+            ViewData["RodzajSilnikaId"] = new SelectList(_context.RodzajSilnika, "RodzajSilnikaId", "Nazwa", samochod.RodzajSilnikaId);
             return View(samochod);
         }
 
