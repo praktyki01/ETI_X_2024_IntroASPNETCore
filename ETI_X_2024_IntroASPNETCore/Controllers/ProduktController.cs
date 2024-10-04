@@ -48,7 +48,7 @@ namespace ETI_X_2024_IntroASPNETCore.Controllers
         // GET: Produkt/Create
         public IActionResult Create()
         {
-            ViewData["KategoriaId"] = new SelectList(_context.Kategoria, "KategoriaId", "KategoriaId");
+            ViewData["KategoriaId"] = new SelectList(_context.Kategoria, "KategoriaId", "Nazwa");
             return View();
         }
 
@@ -65,7 +65,7 @@ namespace ETI_X_2024_IntroASPNETCore.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["KategoriaId"] = new SelectList(_context.Kategoria, "KategoriaId", "KategoriaId", produkt.KategoriaId);
+            ViewData["KategoriaId"] = new SelectList(_context.Kategoria, "KategoriaId", "Nazwa", produkt.KategoriaId);
             return View(produkt);
         }
 
@@ -82,7 +82,7 @@ namespace ETI_X_2024_IntroASPNETCore.Controllers
             {
                 return NotFound();
             }
-            ViewData["KategoriaId"] = new SelectList(_context.Kategoria, "KategoriaId", "KategoriaId", produkt.KategoriaId);
+            ViewData["KategoriaId"] = new SelectList(_context.Kategoria, "KategoriaId", "Nazwa", produkt.KategoriaId);
             return View(produkt);
         }
 
@@ -118,7 +118,7 @@ namespace ETI_X_2024_IntroASPNETCore.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["KategoriaId"] = new SelectList(_context.Kategoria, "KategoriaId", "KategoriaId", produkt.KategoriaId);
+            ViewData["KategoriaId"] = new SelectList(_context.Kategoria, "KategoriaId", "Nazwa", produkt.KategoriaId);
             return View(produkt);
         }
 
