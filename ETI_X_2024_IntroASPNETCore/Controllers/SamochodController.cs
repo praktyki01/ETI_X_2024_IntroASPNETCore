@@ -25,7 +25,102 @@ namespace ETI_X_2024_IntroASPNETCore.Controllers
             var eTI_X_2024_IntroASPNETCoreContext = _context.Samochod.Include(s => s.Kolor).Include(s => s.Marka).Include(s => s.Model).Include(s => s.RodzajSilnika);
             return View(await eTI_X_2024_IntroASPNETCoreContext.ToListAsync());
         }
+        //Filtrowanie według roku 2012
+        public async Task<IActionResult> Index2()
+        {
+            var db = _context.Samochod.Include(s => s.Kolor).Include(s => s.Marka).Include(s => s.Model)
+                .Include(s => s.RodzajSilnika).Where(n=>n.RokProdukcji==2012);
+            return View(await db.ToListAsync());
+        }
+        //Filtrowanie według nazwy Marki z polem tekstowym
+        public async Task<IActionResult> Index3(string marka)
+        {
+            if (marka == null)
+            {
+                var eTI_X_2024_IntroASPNETCoreContext = _context.Samochod.Include(s => s.Kolor).Include(s => s.Marka).
+                Include(s => s.Model).Include(s => s.RodzajSilnika);
+                return View(await eTI_X_2024_IntroASPNETCoreContext.ToListAsync());
+            }else
+            {
+                var eTI_X_2024_IntroASPNETCoreContext = _context.Samochod.Include(s => s.Kolor).Include(s => s.Marka).
+                Include(s => s.Model).Include(s => s.RodzajSilnika).Where(s => s.Marka.Nazwa == marka);
+                return View(await eTI_X_2024_IntroASPNETCoreContext.ToListAsync());
+            }
 
+            
+        }
+        //wyszukiwanie po zakresie dat z listami rozwijanymi
+        public async Task<IActionResult> Index4(int rokod,int rokdo)
+        {
+            if(rokod==0 || rokdo==0)
+            {
+                var eTI_X_2024_IntroASPNETCoreContext = _context.Samochod.Include(s => s.Kolor).Include(s => s.Marka).
+                Include(s => s.Model).Include(s => s.RodzajSilnika);
+                return View(await eTI_X_2024_IntroASPNETCoreContext.ToListAsync());
+            }
+            else
+            { 
+            var eTI_X_2024_IntroASPNETCoreContext = _context.Samochod.Include(s => s.Kolor).Include(s => s.Marka).
+                Include(s => s.Model).Include(s => s.RodzajSilnika).
+                Where(s=>s.RokProdukcji >=rokod && s.RokProdukcji<=rokdo);
+            return View(await eTI_X_2024_IntroASPNETCoreContext.ToListAsync());
+            }
+        }
+        //Wyswietlenie ilości wszystkich samochodów
+        public async Task<IActionResult> Index5()
+        {
+            var eTI_X_2024_IntroASPNETCoreContext = _context.Samochod.Include(s => s.Kolor).Include(s => s.Marka).Include(s => s.Model).Include(s => s.RodzajSilnika);
+            ViewBag.ilosc = eTI_X_2024_IntroASPNETCoreContext.Count();
+            return View(await eTI_X_2024_IntroASPNETCoreContext.ToListAsync());
+        }
+        //Wyswietlenie wartości(sumy) wszystkich samochodów
+        public async Task<IActionResult> Index6()
+        {
+            var eTI_X_2024_IntroASPNETCoreContext = _context.Samochod.Include(s => s.Kolor).Include(s => s.Marka).Include(s => s.Model).Include(s => s.RodzajSilnika);
+            ViewBag.suma = eTI_X_2024_IntroASPNETCoreContext.Sum(s=>s.Cena);
+            return View(await eTI_X_2024_IntroASPNETCoreContext.ToListAsync());
+        }
+        //Usuwanie wszystkich samochodów wskazanej marki
+        public async Task<IActionResult> Index7(string marka)
+        {
+            var carsToDelete = _context.Samochod.Where(s => s.Marka.Nazwa == marka);
+            if(carsToDelete.Count()>0)
+            {
+                _context.Samochod.RemoveRange(carsToDelete);
+                _context.SaveChanges();
+            }
+
+            var eTI_X_2024_IntroASPNETCoreContext = _context.Samochod.Include(s => s.Kolor).Include(s => s.Marka).Include(s => s.Model).Include(s => s.RodzajSilnika);
+            return View(await eTI_X_2024_IntroASPNETCoreContext.ToListAsync());
+        }
+        //Usuwanie samochodów z użyciem listy rozwijanej
+        public async Task<IActionResult> Index8(int MarkaId)
+        {
+            var carsToDelete = _context.Samochod.Where(s => s.Marka.MarkaId == MarkaId);
+            if (carsToDelete.Count() > 0)
+            {
+                _context.Samochod.RemoveRange(carsToDelete);
+                _context.SaveChanges();
+            }
+            ViewData["MarkaId"] = new SelectList(_context.Marka, "MarkaId", "Nazwa");
+            var eTI_X_2024_IntroASPNETCoreContext = _context.Samochod.Include(s => s.Kolor).Include(s => s.Marka).Include(s => s.Model).Include(s => s.RodzajSilnika);
+            return View(await eTI_X_2024_IntroASPNETCoreContext.ToListAsync());
+        }
+        //Usuwanie samochodów z użyciem listy rozwijanej i uwzględnieniem roczników
+        public async Task<IActionResult> Index9(int Roczniki)
+        {
+            ViewBag.Roczniki = _context.Samochod.Select(s => s.RokProdukcji);
+            
+
+            var carsToDelete = _context.Samochod.Where(s => s.RokProdukcji == Roczniki);
+            if (carsToDelete.Count() > 0)
+            {
+                _context.Samochod.RemoveRange(carsToDelete);
+                _context.SaveChanges();
+            }            
+            var eTI_X_2024_IntroASPNETCoreContext = _context.Samochod.Include(s => s.Kolor).Include(s => s.Marka).Include(s => s.Model).Include(s => s.RodzajSilnika);
+            return View(await eTI_X_2024_IntroASPNETCoreContext.ToListAsync());
+        }
         // GET: Samochod/Details/5
         public async Task<IActionResult> Details(int? id)
         {

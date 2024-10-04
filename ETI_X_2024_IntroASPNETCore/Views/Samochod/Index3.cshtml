@@ -10,14 +10,10 @@
 <a asp-area="" asp-controller="Kolor" asp-action="Index">Kolor</a>
 <a asp-area="" asp-controller="RodzajSilnika" asp-action="Index">RodzajSilnika</a>
 <hr/>
-<a asp-area="" asp-controller="Samochod" asp-action="Index2">Filtrowanie po roku 2012</a>
-<a asp-area="" asp-controller="Samochod" asp-action="Index3">Filtrowanie po marce z polem tekstowym</a>
-<a asp-area="" asp-controller="Samochod" asp-action="Index4">Filtrowanie po zakresie dat z listami rozwijanymi</a>
-<a asp-area="" asp-controller="Samochod" asp-action="Index5">Wyświetlenie liczby wszystkich samochodów</a>
-<a asp-area="" asp-controller="Samochod" asp-action="Index6">Wyświetlenie wartości(sumy) wszystkich samochodów</a>
-<a asp-area="" asp-controller="Samochod" asp-action="Index7">Usuwanie samochodów wybranej marki</a>
-<a asp-area="" asp-controller="Samochod" asp-action="Index8">Usuwanie samochodów wybranej marki z listą rozwijaną</a>
-<a asp-area="" asp-controller="Samochod" asp-action="Index9">Usuwanie wg roczników w bazie</a>
+<form method="post" action="/samochod/index3">
+    <input type="text" name="marka"/>
+    <input type="submit" value="Szukaj według Marki"/>
+</form>
 
 <p>
     <a asp-action="Create">Create New</a>
