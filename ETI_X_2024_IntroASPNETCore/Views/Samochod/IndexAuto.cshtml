@@ -1,0 +1,31 @@
+﻿@model IEnumerable<ETI_X_2024_IntroASPNETCore.Models.Samochod>
+
+@{
+    ViewData["Title"] = "IndexAuto";
+}
+
+<h1>Samochody</h1>
+<a asp-action="CreateAuto">Create New</a>
+<table>
+    <tr>
+        <th>Marka</th>
+        <th>Model</th>
+        <th>Cena</th>
+        <th>Przebieg</th>
+        <th>Rok Produkcji</th>
+        <th>Kolor</th>
+        <th>Rodzaj Silnika</th>
+    </tr>
+@foreach(Samochod item in Model)
+{
+    <tr>
+    <td>@item.RokProdukcji</td>
+    <td>@item.Cena</td>
+    <td>@item.Marka.Nazwa</td>
+    <td>@item.Model.Nazwa</td>
+    <td>@item.Przebieg</td>
+    <td>@item.Kolor.Nazwa</td>
+    <td>@item.RodzajSilnika.Nazwa</td>
+    </tr>
+}
+</table>

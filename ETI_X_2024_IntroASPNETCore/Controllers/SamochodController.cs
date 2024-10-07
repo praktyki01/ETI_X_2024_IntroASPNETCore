@@ -18,7 +18,33 @@ namespace ETI_X_2024_IntroASPNETCore.Controllers
         {
             _context = context;
         }
-
+        public async Task<IActionResult> IndexAuto()
+        {
+            var db = _context.Samochod.Include(s => s.Marka).Include(s => s.Kolor).Include(s => s.RodzajSilnika).Include(s => s.Model);
+            return View(await db.ToListAsync());
+        }
+        public async Task<IActionResult> CreateAuto(int Cena, int Przebieg, int RokProdukcji, int Marka, int Model, int Kolor, int RodzajSilnika)
+        {
+            ViewBag.Marka = _context.Marka.ToList();
+            ViewBag.Model = _context.Model.ToList();
+            ViewBag.Kolor = _context.Kolor.ToList();
+            ViewBag.RodzajSilnika = _context.RodzajSilnika.ToList();
+            if (Cena != 0 && Przebieg != 0 && RokProdukcji != 0)
+            {
+                Samochod s = new Samochod();
+                s.Cena = Cena;
+                s.Przebieg = Przebieg;
+                s.RokProdukcji = RokProdukcji;
+                s.MarkaId = Marka;
+                s.ModelId = Model;
+                s.KolorId = Kolor;
+                s.RodzajSilnikaId = RodzajSilnika;
+                _context.Samochod.Add(s);
+                _context.SaveChanges();
+                return RedirectToAction("IndexAuto");
+            }
+            return View();
+        }
         // GET: Samochod
         public async Task<IActionResult> Index()
         {

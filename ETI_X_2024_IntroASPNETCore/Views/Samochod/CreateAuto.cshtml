@@ -1,0 +1,43 @@
+﻿
+@{
+    ViewData["Title"] = "CreateAuto";
+}
+
+<h1>CreateAuto</h1>
+<form method="post" action="/Samochod/CreateAuto">
+   <label>Rok Produkcji</label>
+    <input type="number" name="RokProdukcji" /><br />
+    <label>Cena</label>
+    <input type="number" name="Cena" /><br />
+    <label>Przebieg</label>
+    <input type="number" name="Przebieg" /><br />
+    <label>Marka</label>
+    <select name="Marka">
+    @foreach(var item in ViewBag.Marka)
+    {
+        <option value="@item.MarkaId">@item.Nazwa</option>
+    }
+    </select><br />
+    <label>Model</label>
+    <select name="Model">
+        @foreach (var item in ViewBag.Model)
+        {
+            <option value="@item.ModelId">@item.Nazwa</option>
+        }
+    </select><br />
+    <label>Kolor</label>
+    <select name="Kolor">
+        @foreach (var item in ViewBag.Kolor)
+        {
+            <option value="@item.KolorId">@item.Nazwa</option>
+        }
+    </select><br />
+    <label>Rodzaj Silnika</label>
+    <select name="RodzajSilnika">
+        @foreach (var item in ViewBag.RodzajSilnika)
+        {
+            <option value="@item.RodzajSilnikaId">@item.Nazwa</option>
+        }
+    </select><br />
+    <input type="submit" value="Wyślij"/>
+</form>
