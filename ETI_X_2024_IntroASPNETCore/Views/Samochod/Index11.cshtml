@@ -24,13 +24,6 @@
 <br />
 <a asp-area="" asp-controller="Samochod" asp-action="Index9">Usuwanie wg roczników w bazie</a>
 <br />
-<a asp-area="" asp-controller="Samochod" asp-action="Index10">Każda kolumna inny kolor</a>
-<br />
-<a asp-area="" asp-controller="Samochod" asp-action="Index11">Samochody bez kolumny rodzaj silnika</a>
-<br />
-<a asp-area="" asp-controller="Samochod" asp-action="Index12">Kolor czcionki taki jak wybrany kolor po angielsku</a>
-<br /><a asp-area="" asp-controller="Samochod" asp-action="Index13">Samochody z wybranym rodzajem silinka</a>
-<br />
 
 <p>
     <a asp-action="Create">Create New</a>
@@ -52,9 +45,6 @@
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Model)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.RodzajSilnika)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Kolor)
@@ -79,9 +69,6 @@
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Model.Nazwa)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.RodzajSilnika.Nazwa)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Kolor.Nazwa)

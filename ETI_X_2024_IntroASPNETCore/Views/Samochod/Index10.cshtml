@@ -24,13 +24,6 @@
 <br />
 <a asp-area="" asp-controller="Samochod" asp-action="Index9">Usuwanie wg roczników w bazie</a>
 <br />
-<a asp-area="" asp-controller="Samochod" asp-action="Index10">Każda kolumna inny kolor</a>
-<br />
-<a asp-area="" asp-controller="Samochod" asp-action="Index11">Samochody bez kolumny rodzaj silnika</a>
-<br />
-<a asp-area="" asp-controller="Samochod" asp-action="Index12">Kolor czcionki taki jak wybrany kolor po angielsku</a>
-<br /><a asp-area="" asp-controller="Samochod" asp-action="Index13">Samochody z wybranym rodzajem silinka</a>
-<br />
 
 <p>
     <a asp-action="Create">Create New</a>
@@ -38,13 +31,13 @@
 <table class="table">
     <thead>
         <tr>
-            <th>
+            <th style="background-color:gray;">
                 @Html.DisplayNameFor(model => model.Przebieg)
             </th>
-            <th>
+            <th style="background-color:beige;">
                 @Html.DisplayNameFor(model => model.RokProdukcji)
             </th>
-            <th>
+            <th style="background-color:cadetblue;">
                 @Html.DisplayNameFor(model => model.Cena)
             </th>
             <th>
@@ -65,13 +58,13 @@
     <tbody>
 @foreach (var item in Model) {
         <tr>
-            <td>
+                <td style="background-color:gray;">
                 @Html.DisplayFor(modelItem => item.Przebieg)
             </td>
-            <td>
+                <td style="background-color:beige;">
                 @Html.DisplayFor(modelItem => item.RokProdukcji)
             </td>
-            <td>
+                <td style="background-color:cadetblue;">
                 @Html.DisplayFor(modelItem => item.Cena)
             </td>
             <td>

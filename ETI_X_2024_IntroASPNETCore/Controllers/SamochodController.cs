@@ -147,6 +147,32 @@ namespace ETI_X_2024_IntroASPNETCore.Controllers
             var eTI_X_2024_IntroASPNETCoreContext = _context.Samochod.Include(s => s.Kolor).Include(s => s.Marka).Include(s => s.Model).Include(s => s.RodzajSilnika);
             return View(await eTI_X_2024_IntroASPNETCoreContext.ToListAsync());
         }
+        //każda kolumna inny kolor
+        public async Task<IActionResult> Index10()
+        {
+            var eTI_X_2024_IntroASPNETCoreContext = _context.Samochod.Include(s => s.Kolor).Include(s => s.Marka).Include(s => s.Model).Include(s => s.RodzajSilnika);
+            return View(await eTI_X_2024_IntroASPNETCoreContext.ToListAsync());
+        }
+        //wszystkie dane bez rodzaju silnika
+        public async Task<IActionResult> Index11()
+        {
+            var eTI_X_2024_IntroASPNETCoreContext = _context.Samochod.Include(s => s.Kolor).Include(s => s.Marka).Include(s => s.Model).Include(s => s.RodzajSilnika);
+            return View(await eTI_X_2024_IntroASPNETCoreContext.ToListAsync());
+        }
+        //kolor czcionki taki jak kolor po angielsku
+        public async Task<IActionResult> Index12()
+        {
+            var eTI_X_2024_IntroASPNETCoreContext = _context.Samochod.Include(s => s.Kolor).Include(s => s.Marka).Include(s => s.Model).Include(s => s.RodzajSilnika);
+            return View(await eTI_X_2024_IntroASPNETCoreContext.ToListAsync());
+        }
+        public async Task<IActionResult> Index13(int RodzajSilnikaId)
+        {
+            ViewData["RodzajSilnikaId"] = new SelectList(_context.RodzajSilnika, "RodzajSilnikaId", "Nazwa");
+            var eTI_X_2024_IntroASPNETCoreContext = _context.Samochod.Include(s => s.Kolor).
+                Include(s => s.Marka).Include(s => s.Model).
+                Include(s => s.RodzajSilnika).Where(s=>s.RodzajSilnikaId==RodzajSilnikaId);
+            return View(await eTI_X_2024_IntroASPNETCoreContext.ToListAsync());
+        }
         // GET: Samochod/Details/5
         public async Task<IActionResult> Details(int? id)
         {
