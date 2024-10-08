@@ -21,5 +21,9 @@ namespace ETI_X_2024_IntroASPNETCore.Data
         public DbSet<ETI_X_2024_IntroASPNETCore.Models.Model> Model{ get; set; } = default!;
         public DbSet<ETI_X_2024_IntroASPNETCore.Models.Kolor> Kolor { get; set; } = default!;
         public DbSet<ETI_X_2024_IntroASPNETCore.Models.RodzajSilnika> RodzajSilnika { get; set; } = default!;
+        public DbSet<ETI_X_2024_IntroASPNETCore.Models.Sport> Sport { get; set; } = default!;
+        public DbSet<ETI_X_2024_IntroASPNETCore.Models.Trening> Trening { get; set; } = default!;
+        public DbSet<ETI_X_2024_IntroASPNETCore.Models.Waga> Waga { get; set; } = default!;
+        public DbSet<ETI_X_2024_IntroASPNETCore.Models.Uzytkownik> Uzytkownik { get; set; } = default!;
     }
 }
