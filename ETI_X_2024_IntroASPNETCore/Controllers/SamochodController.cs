@@ -173,6 +173,27 @@ namespace ETI_X_2024_IntroASPNETCore.Controllers
                 Include(s => s.RodzajSilnika).Where(s=>s.RodzajSilnikaId==RodzajSilnikaId);
             return View(await eTI_X_2024_IntroASPNETCoreContext.ToListAsync());
         }
+        //Klonowanie samochodów
+        public async Task<IActionResult> Index15(int id)
+        {
+            var samochod = _context.Samochod.Where(s=>s.SamochodId==id).FirstOrDefault();
+            if (samochod != null)
+            {
+                Samochod s = new Samochod();
+                s.Cena = samochod.Cena;
+                s.Przebieg = samochod.Przebieg;
+                s.RokProdukcji = samochod.RokProdukcji;
+                s.MarkaId = samochod.MarkaId;
+                s.ModelId = samochod.ModelId;
+                s.KolorId = samochod.KolorId;
+                s.RodzajSilnikaId = samochod.RodzajSilnikaId;
+                _context.Samochod.Add(s);
+                _context.SaveChanges();
+                return RedirectToAction("Index15", new {id=0});
+            }
+            var eTI_X_2024_IntroASPNETCoreContext = _context.Samochod.Include(s => s.Kolor).Include(s => s.Marka).Include(s => s.Model).Include(s => s.RodzajSilnika);
+            return View(await eTI_X_2024_IntroASPNETCoreContext.ToListAsync());
+        }
         // GET: Samochod/Details/5
         public async Task<IActionResult> Details(int? id)
         {
